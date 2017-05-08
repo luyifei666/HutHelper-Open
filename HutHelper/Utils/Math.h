@@ -9,9 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @interface Math : NSObject
-/**加密*/
-+ (NSString*)sha1:(NSString *)input;
-+ (NSString *)md5:(NSString *)input;
 /**时间*/
 + (int) getWeek:(int)nowyear m:(int)nowmonth d:(int)nowday;
 + (int) getWeek;

@@ -27,8 +27,6 @@
 
 @implementation AppDelegate
 
-#define kAppKey @"bb96c4df7fd649cc2eec6357242f9cc4"
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     /**友盟推送*/
     [UMessage startWithAppkey:APPKEY_UMESSAGE launchOptions:launchOptions];
@@ -48,7 +46,6 @@
     [UMessage setLogEnabled:NO];//打开日志，方便调试
     /**友盟统计*/
     UMConfigInstance.appKey          = APPKEY_UMESSAGE;
-    UMConfigInstance.ChannelId       = @"App Store";
     UMConfigInstance.eSType          = E_UM_GAME;//仅适用于游戏场景，应用统计不用设置
     NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
     [MobClick setAppVersion:version];
@@ -69,14 +66,14 @@
     [[UMSocialManager defaultManager] setUmSocialAppkey:APPKEY_UMESSAGE];//设置友盟appkey
     [self configUSharePlatforms];
     /*热更新**/
-    [JSPatch startWithAppKey:@"bd9208bd34ab8197"];
+    [JSPatch startWithAppKey:APPKEY_JSPATCH];
     [JSPatch setupDevelopment];
-    [JSPatch setupRSAPublicKey:@"-----BEGIN PUBLIC KEY-----\nMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCi/XcpS7/lnAf0YEta273pubUy\niZGGy+xNOL2cV4XLpV0OmhCWunAdBuFSV7nn2HWcZWsTuRMt1gFUbO5gtFw6m2JH\niGvfK2YlQvRo91lGsbczad3SCe738lq6MiYNjyaoiCAW9U9+WxvX8DVUxzNhrlba\nwH1UzhSy5A8zWi8bMwIDAQAB\n-----END PUBLIC KEY-----"];
+    [JSPatch setupRSAPublicKey:RSA_JSPATCH];
     [JSPatch sync];
     /*IM**/
-    [Bmob registerWithAppKey:kAppKey];
+    [Bmob registerWithAppKey:APPKEY_BMOB];
     self.sharedIM = [BmobIM sharedBmobIM];
-    [self.sharedIM registerWithAppKey:kAppKey];
+    [self.sharedIM registerWithAppKey:APPKEY_BMOB];
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     self.token = @"";
     BmobUser *user = [BmobUser getCurrentUser];
@@ -209,7 +206,7 @@
 }
 + (void)initialize
 {
-    [iVersion sharedInstance].appStoreID = 1164848835;
+    [iVersion sharedInstance].appStoreID = APPSTORE_ID;
 }
 
 -(void)userLogin:(NSNotification *)noti{
