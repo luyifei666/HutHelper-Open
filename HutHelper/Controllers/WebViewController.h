@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ResetPassWordViewController : UIViewController
-
+@interface WebViewController : UIViewController
+@property(nonatomic,copy)NSString *urlString;
+@property(nonatomic,copy)NSString *viewTitle;
 @end
