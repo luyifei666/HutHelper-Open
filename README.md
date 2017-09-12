@@ -17,9 +17,9 @@
 
 # Get Started
 ```
-git clone https://github.com/isnine/HutHelper-Open.git
+git clone https://github.com/isnine/HutHelper-Open.git --depth=1
 ```
-接口与线上版本不同，登录界面输入任意账号和密码，即可登录
+接口与线上版本不同，登录界面输入任意账号和密码，即可登录，因工程较大，建议只克隆第一层
 # Frame
 ```
 .
